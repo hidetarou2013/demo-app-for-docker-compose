@@ -49,7 +49,6 @@ Resources:
          - Fn::GetAZs: {Ref: 'AWS::Region'}
       VpcId: !Ref 'VPC'
       CidrBlock: !Ref PublicSubnetOneCidr
-#      CidrBlock: !Select [ 0, !Cidr [ !Ref VpcCidr,4,8]]
       MapPublicIpOnLaunch: true
       Tags:
         - Key: Name
@@ -69,7 +68,6 @@ Resources:
          - Fn::GetAZs: {Ref: 'AWS::Region'}
       VpcId: !Ref 'VPC'
       CidrBlock: !Ref PublicSubnetTwoCidr
-#      CidrBlock: !Select [ 1, !Cidr [ !Ref VpcCidr,4,8]]
       MapPublicIpOnLaunch: true
       Tags:
         - Key: Name
@@ -169,7 +167,6 @@ Resources:
          - Fn::GetAZs: {Ref: 'AWS::Region'}
       VpcId: !Ref 'VPC'
       CidrBlock: !Ref PrivateSubnetOneCidr
-#      CidrBlock: !Select [ 2, !Cidr [ !Ref VpcCidr,4,8]]
       Tags:
         - Key: Name
           Value: !Join
@@ -188,7 +185,6 @@ Resources:
          - Fn::GetAZs: {Ref: 'AWS::Region'}
       VpcId: !Ref 'VPC'
       CidrBlock: !Ref PrivateSubnetTwoCidr
-#      CidrBlock: !Select [ 3, !Cidr [ !Ref VpcCidr,4,8]]
       Tags:
         - Key: Name
           Value: !Join
@@ -308,15 +304,3 @@ Outputs:
       - ""
       - - "http://"
         - !GetAtt 'DemoLoadbalancer.DNSName'
-  PrivateSubnetOneId:
-    Description: The ID of the PrivateSubnetOne that this stack is deployed in
-    Value: !Ref 'PrivateSubnetOne'
-  PrivateSubnetTwoId:
-    Description: The ID of the PrivateSubnetTwo that this stack is deployed in
-    Value: !Ref 'PrivateSubnetTwo'
-  PublicSubnetOneId:
-    Description: The ID of the PublicSubnetOne that this stack is deployed in
-    Value: !Ref 'PublicSubnetOne'
-  PublicSubnetTwoId:
-    Description: The ID of the PublicSubnetTwo that this stack is deployed in
-    Value: !Ref 'PublicSubnetTwo'
